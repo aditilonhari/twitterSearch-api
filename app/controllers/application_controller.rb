@@ -7,10 +7,14 @@ class ApplicationController < ActionController::API
           config.access_token        = ENV['ACCESS_TOKEN']
           config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
         end
-        
+
         query_str = query_params[:q]
-    	@tweets = client.search("#{query_str} -rt")
-		render json: @tweets
+        @tweets = client.search("#{query_str} -rt")
+        # Caching the results
+		# @tweets =  Rails.cache.fetch("search_query_#{query_str}", expires_in: 15.minutes) do
+		#  client.search("#{query_str} -rt")
+		# end
+ 		render json: @tweets
 	end
 
 	private

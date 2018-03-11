@@ -8,6 +8,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use Puma as the app server
+gem 'rack-cors', :require => 'rack/cors'
 gem 'puma', '~> 3.7'
 gem 'twitter'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
